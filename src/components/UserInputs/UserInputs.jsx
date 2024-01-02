@@ -1,23 +1,6 @@
-import { useState } from "react";
 import './UserInputs.css';
 
-function UserInputs() {
-    const [userInput, setUserInput] = useState({
-        initialInvestment: 10000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 10,
-    })
-
-    function handleChange(inputIdentificator, inputValue) {
-        setUserInput(prevState => {
-           return {
-               ...prevState,
-               [inputIdentificator]: inputValue,
-           }
-        });
-    }
-
+function UserInputs({ userInput, onChange }) {
     return (
         <>
             <div className="input-group">
@@ -27,7 +10,7 @@ function UserInputs() {
                         type="number"
                         required
                         value={userInput.initialInvestment}
-                        onChange={(e) => handleChange('initialInvestment', e.target.value)}
+                        onChange={(e) => onChange('initialInvestment', e.target.value)}
                     />
                 </p>
                 <p>
@@ -36,7 +19,7 @@ function UserInputs() {
                         type="number"
                         required
                         value={userInput.annualInvestment}
-                        onChange={(e) => handleChange('annualInvestment', e.target.value)}
+                        onChange={(e) => onChange('annualInvestment', e.target.value)}
                     />
                 </p>
             </div>
@@ -47,7 +30,7 @@ function UserInputs() {
                         type="number"
                         required
                         value={userInput.expectedReturn}
-                        onChange={(e) => handleChange('expectedReturn', e.target.value)}
+                        onChange={(e) => onChange('expectedReturn', e.target.value)}
                     />
                 </p>
                 <p>
@@ -56,7 +39,7 @@ function UserInputs() {
                         type="number"
                         required
                         value={userInput.duration}
-                        onChange={(e) => handleChange('duration', e.target.value)}
+                        onChange={(e) => onChange('duration', e.target.value)}
                     />
                 </p>
             </div>
