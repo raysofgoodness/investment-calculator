@@ -12,6 +12,8 @@ function App() {
         duration: 10,
     });
 
+    const initialRightDuration = userInput.duration >= 1;
+
     function handleChange(inputIdentificator, inputValue) {
         setUserInput(prevState => {
             return {
@@ -30,9 +32,8 @@ function App() {
                     onChange={handleChange}
                 />
             </Section>
-            <Results
-                userInput={userInput}
-            />
+            {!initialRightDuration && (<p className="center">Please enter a duration greater than zero. </p>)}
+            {initialRightDuration && <Results userInput={userInput} />}
         </>
     );
 }
